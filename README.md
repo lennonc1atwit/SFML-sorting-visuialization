@@ -1,6 +1,8 @@
 # SFML-sorting-visuialization
 A tool written in c++ uisng SFML and ImGui used to visuialize sorting algorithms
 
+![Preview Image](https://user-images.githubusercontent.com/55283009/160431537-20cf97cd-b102-4162-9fc1-b196e41f0a91.png)
+
 ## Dependicies used
   - OpenGL
   - SFML 2.5
