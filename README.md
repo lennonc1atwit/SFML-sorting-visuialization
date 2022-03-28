@@ -1,7 +1,7 @@
 # SFML-sorting-visuialization
 A tool written in c++ uisng SFML and ImGui used to visuialize sorting algorithms
 
-Dependicies used
+## Dependicies used
   - OpenGL
   - SFML 2.5
   - ImGui SFML
@@ -9,7 +9,7 @@ Dependicies used
 
 The program displays the sorting arrays state in the window and handles user input via ImGui. A sperate thread is used to control the actual sorting algorithm, currently only Insertion Sort and Selection Sort are implmented but I plan to add more in the future. 
 
-Implmented Sorts
+## Implmented Sorts
   - Insertion
   - Selection
 
