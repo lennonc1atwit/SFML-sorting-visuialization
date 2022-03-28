@@ -112,29 +112,12 @@ void updateMenu()
 
 		ImGui::EndMainMenuBar();
 	}
-
-	ImGuiWindowFlags window_flags = ImGuiWindowFlags_AlwaysAutoResize;
-	if (ImGui::Begin("Thread Debug", NULL, window_flags))
-	{
-		char str[50];
-		sprintf_s(str, "Thread handle : %04X", (int)hSorting_thread);
-		ImGui::Text(str);
-		sprintf_s(str, "Thread status : %d", thread_status.load());
-		ImGui::Text(str);
-
-		if (thread_status <= 0)
-			ImGui::Text("Thread status: suspended");
-		else
-			ImGui::Text("Thread status: running");
-
-		ImGui::End();
-	}
 }
 
 int main()
 {
 	// Create our SFML window and a clock to keep track of frame times
-	sf::RenderWindow window(sf::VideoMode(600, 600), "SFML sorting visuialization!");
+	sf::RenderWindow window(sf::VideoMode(1280, 640), "SFML sorting visuialization!");
 	sf::Clock clock;
 
 	// Init ImGUI to our window with default font

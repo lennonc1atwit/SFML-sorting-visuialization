@@ -40,7 +40,7 @@ bool Algorithms::Sort::insertionSort(Bar* bar_arr[], int num_arr[], int size, st
 			if (thread_cancel_sort->load() == true)
 				return false;
 			
-			//Sleep(10);
+			Sleep(1);
 		}
 	}
 	return true;
@@ -75,7 +75,7 @@ bool Algorithms::Sort::selectionSort(Bar* bar_arr[], int num_arr[], int size, st
 			if (thread_cancel_sort->load() == true)
 				return false;
 			
-			//Sleep(1);
+			Sleep(1);
 		}
 		Util::swap(num_arr, i, min_idx);
 	}
