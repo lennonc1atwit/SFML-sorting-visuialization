@@ -1,53 +1,52 @@
 #include "Algorithms.h"
 
-void colorBar(Bar* bar, sf::Color clr)
-{
-	bar->getRectPtr()->setFillColor(clr);
-}
-
-void Algorithms::swap(int arr[], int i, int j)
+void Algorithms::Util::swap(int arr[], int i, int j)
 {
 	int temp = arr[i];
 	arr[i] = arr[j];
 	arr[j] = temp;
 }
 
-void Algorithms::shuffle(int num_array[], int size)
+void Algorithms::Util::shuffle(int num_array[], int size)
 {
-
 	for (int i = 0; i < size; i++) {
 		int r = rand() % size;
 
 		if (i != r)
-			swap(num_array, i, r);
+			Util::swap(num_array, i, r);
 	}
 }
 
-void Algorithms::insertionSort(Bar* bar_arr[], int num_arr[], int size) 
+bool Algorithms::Sort::insertionSort(Bar* bar_arr[], int num_arr[], int size, std::atomic<bool>* thread_cancel_sort)
 {
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = i; j > 0 && num_arr[j - 1] > num_arr[j]; j--)
 		{
-			colorBar(bar_arr[j-1], sf::Color::White); // element being evaluated is red
+			bar_arr[j-1]->setColor(sf::Color::White); // element being evaluated is red
 
-			swap(num_arr, j, j - 1);
-
-			Sleep(10);
+			Util::swap(num_arr, j, j - 1);
 
 			// Set elements not sorted to black
 			for (int k = i; k < size; k++) {
-				colorBar(bar_arr[k], sf::Color::Black);
+				bar_arr[k]->setColor(sf::Color::Black);
 			}
 			// Set sorted elements to green
 			for (int k = i; k >= 0; k--) {
-				colorBar(bar_arr[k], sf::Color::Green);
+				bar_arr[k]->setColor(sf::Color::Green);
 			}
+
+			// Check if we are canceling
+			if (thread_cancel_sort->load() == true)
+				return false;
+			
+			//Sleep(10);
 		}
 	}
+	return true;
 }
 
-void Algorithms::selectionSort(Bar* bar_arr[], int num_arr[], int size)
+bool Algorithms::Sort::selectionSort(Bar* bar_arr[], int num_arr[], int size, std::atomic<bool>* thread_cancel_sort)
 {
 	for (int i = 0; i < size - 1; i++) {
 		int min_idx = i;
@@ -56,42 +55,45 @@ void Algorithms::selectionSort(Bar* bar_arr[], int num_arr[], int size)
 			if (num_arr[j] < num_arr[min_idx]) {
 				min_idx = j;
 			}
-
-			Sleep(5);
 			
 			// Set elements not sorted to black
 			for (int k = i; k < size; k++) {
-				colorBar(bar_arr[k], sf::Color::Black);
+				bar_arr[k]->setColor(sf::Color::Black);
 			}
 			// Set sorted elements to green
 			for (int k = i; k >= 0; k--) {
-				colorBar(bar_arr[k], sf::Color::Green);
+				bar_arr[k]->setColor(sf::Color::Green);
 			}
 
 			// Color min red
-			colorBar(bar_arr[min_idx], sf::Color::Red);
+			bar_arr[min_idx]->setColor(sf::Color::Red);
 
 			// Color current element yellow
-			colorBar(bar_arr[j], sf::Color::White);
+			bar_arr[j]->setColor(sf::Color::White);
 
+			// Check if we are canceling
+			if (thread_cancel_sort->load() == true)
+				return false;
+			
+			//Sleep(1);
 		}
-		swap(num_arr, i, min_idx);
+		Util::swap(num_arr, i, min_idx);
 	}
-
+	return true;
 }
 
-void Algorithms::bubbleSort(Bar* bar_arr[], int num_arr[], int size) 
+bool Algorithms::Sort::bubbleSort(Bar* bar_arr[], int num_arr[], int size, std::atomic<bool>* thread_cancel_sort)
 {
-
+	return true;
 }
 
-void Algorithms::quickSort(Bar* bar_arr[], int num_arr[], int size) 
+bool Algorithms::Sort::quickSort(Bar* bar_arr[], int num_arr[], int size, std::atomic<bool>* thread_cancel_sort)
 {
-
+	return true;
 }
 
-void Algorithms::mergeSort(Bar* bar_arr[], int num_arr[], int size) 
+bool Algorithms::Sort::mergeSort(Bar* bar_arr[], int num_arr[], int size, std::atomic<bool>* thread_cancel_sort)
 {
-
+	return true;
 }
 

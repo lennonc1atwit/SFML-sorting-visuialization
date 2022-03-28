@@ -50,6 +50,11 @@ void Bar::setValue(int v)
 
 }
 
+void Bar::setColor(sf::Color clr)
+{
+	_pRect->setFillColor(clr);
+}
+
 sf::RectangleShape* Bar::getRectPtr()
 {
 	return _pRect;

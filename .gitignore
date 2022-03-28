@@ -361,3 +361,10 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/dep/imgui-1.87
+/dep/imgui-sfml-master/.github/workflows/build.yml
+/dep/imgui-sfml-master/cmake/FindImGui.cmake
+/dep/imgui-sfml-master/examples/minimal
+/dep/imgui-sfml-master/examples/multiple_windows
+/dep/imgui-sfml-master/examples
+/dep/imgui-sfml-master

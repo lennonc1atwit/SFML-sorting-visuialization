@@ -12,6 +12,7 @@ public:
 	int getHeight();
 	int getValue();
 	void setValue(int v);
+	void setColor(sf::Color clr);
 
 	sf::RectangleShape* getRectPtr();
 
